@@ -1,10 +1,10 @@
-clusterEnv: ""
+clusterEnv: "staging"
 productionBackendHost: "prod.anythink.market"
 stagingBackendHost: "staging.anythink.market"
 
 backend:
   serviceName: anythink-backend
-  containerPort: 3000
+  containerPort: 8080
   replicaCount: 1
   service:
     type: ClusterIP
@@ -17,11 +17,11 @@ backend:
     tag: "latest"
   resources:
     limits:
-      cpu: 100m
-      memory: 512Mi
+      cpu: 1000m
+      memory: 5120Mi
     requests:
-      cpu: 100m
-      memory: 128Mi
+      cpu: 1000m
+      memory: 1280Mi
 
 frontend:
   serviceName: anythink-frontend
@@ -47,7 +47,7 @@ frontend:
 database:
   deploy: true
   connectionProtocol: postgres://
-  serviceName: postgres-rails
+  serviceName: postgres
   containerPort: 5433
   servicePort: 5432
   replicaCount: 1
